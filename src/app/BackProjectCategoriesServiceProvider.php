@@ -27,6 +27,8 @@ class BackProjectCategoriesServiceProvider extends ServiceProvider
         $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
 
         $this->registerCommands();
+
+        $this->publishFiles();
     }
 
     public function register()
@@ -42,5 +44,13 @@ class BackProjectCategoriesServiceProvider extends ServiceProvider
                 \Afrittella\BackProjectCategories\Console\Commands\SeedDefaultCategories::class,
             ]);
         }
+    }
+
+    private function publishFiles()
+    {
+        // publish lang files
+        $this->publishes([__DIR__ . '/../resources/lang' => resource_path('lang/vendor/back-project-categories')], 'lang');
+        // publish views
+        $this->publishes([__DIR__ . '/../resources/views' => resource_path('views/vendor/back-project-categories')], 'views');
     }
 }
