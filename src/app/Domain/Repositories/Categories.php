@@ -2,6 +2,7 @@
 
 namespace Afrittella\BackProjectCategories\Domain\Repositories;
 
+use Afrittella\BackProject\Repositories\Attachments;
 use Afrittella\BackProject\Repositories\Base;
 
 // We extend Afrittella\BackProject repository pattern
@@ -9,7 +10,8 @@ class Categories extends Base
 {
     function model()
     {
-        return 'Afrittella\BackProjectCategories\Domain\Models\Category';
+        //return 'Afrittella\BackProjectCategories\Domain\Models\Category';
+        return config('back-project-categories.categories_model');
     }
 
     public function all($columns = ['*'])
@@ -38,6 +40,23 @@ class Categories extends Base
     {
         $menu = $this->model->find($id);
         return $menu->down();
+    }
+
+    public function addAttachment($data, $user_id, $category_id)
+    {
+        $category = $this->find($category_id);
+
+        return $category->addAttachment($data);
+
+        /*$attachment = $attachments->create(array_merge($data, ['user_id' => $user_id]));
+
+        if (!empty($attachment)) {
+            $category = $this->find($category_id);
+
+            $category->attachments()->attach($attachment->id);
+        }*/
+
+        //return false;
     }
 
     public function tree($name)

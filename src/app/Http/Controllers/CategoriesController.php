@@ -2,12 +2,15 @@
 
 namespace Afrittella\BackProjectCategories\Http\Controllers;
 
+use Afrittella\BackProject\Facades\SlugGenerator;
 use Afrittella\BackProject\Http\Controllers\Controller;
 use Afrittella\BackProject\Exceptions\NotFoundException;
+use Afrittella\BackProject\Repositories\Attachments;
 use Afrittella\BackProjectCategories\Http\Requests\CategoryAdd;
 use Afrittella\BackProjectCategories\Http\Requests\CategoryEdit;
 use Afrittella\BackProjectCategories\Domain\Repositories\Categories;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Prologue\Alerts\Facades\Alert;
 
 class CategoriesController extends Controller
@@ -19,6 +22,8 @@ class CategoriesController extends Controller
 
     public function index(Categories $categories)
     {
+
+
         $root = $categories->findBy('slug', 'root');
 
         if (!empty($root)) {
@@ -83,5 +88,19 @@ class CategoriesController extends Controller
         Alert::add('success', trans('back-project::crud.model_updated', ['model' => trans('back-project-categories::categories.category')]))->flash();
 
         return back();
+    }
+
+    public function addImage(Request $request, Attachments $attachments, Categories $categories, $id)
+    {
+        $user = Auth::user();
+
+        $categories->addAttachment($request->all(), $user->id, $id);
+
+        Alert::add('success', trans('back-project::base.image_uploaded'))->flash();
+
+        return response()->json([
+            'success' => true,
+            'message' => trans('back-project::base.image_uploaded')
+        ]);
     }
 }
