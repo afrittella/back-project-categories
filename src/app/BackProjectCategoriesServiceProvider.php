@@ -23,6 +23,11 @@ class BackProjectCategoriesServiceProvider extends ServiceProvider
         // Load Migrations
         $this->loadMigrationsFrom(realpath(__DIR__ . '/../database/migrations'));
 
+        // use the vendor configuration file as fallback
+        $this->mergeConfigFrom(
+            __DIR__ . '/../config/config.php', 'back-project-categories'
+        );
+
         // Load Routes
         $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
 
@@ -33,7 +38,8 @@ class BackProjectCategoriesServiceProvider extends ServiceProvider
 
     public function register()
     {
-
+        // Register configuration values
+        config(['imagecache.templates.categories_thumb' => 'Afrittella\BackProjectCategories\ImageTemplates\Thumbnail']);
     }
 
     private function registerCommands()
@@ -48,6 +54,8 @@ class BackProjectCategoriesServiceProvider extends ServiceProvider
 
     private function publishFiles()
     {
+        // publish config file
+        $this->publishes([__DIR__ . '/../config/config.php' => config_path() . '/back-project-categories.php'], 'config');
         // publish lang files
         $this->publishes([__DIR__ . '/../resources/lang' => resource_path('lang/vendor/back-project-categories')], 'lang');
         // publish views

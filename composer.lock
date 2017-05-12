@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "afrittella/back-project",
-            "version": "1.0.2",
+            "version": "1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/afrittella/back-project.git",
-                "reference": "c71fa318fefe92a942cd948688e18aae7a3d84f2"
+                "reference": "4d422220db5d46c2e9dfbec76a99201a330ece39"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/afrittella/back-project/zipball/c71fa318fefe92a942cd948688e18aae7a3d84f2",
-                "reference": "c71fa318fefe92a942cd948688e18aae7a3d84f2",
+                "url": "https://api.github.com/repos/afrittella/back-project/zipball/4d422220db5d46c2e9dfbec76a99201a330ece39",
+                "reference": "4d422220db5d46c2e9dfbec76a99201a330ece39",
                 "shasum": ""
             },
             "require": {
@@ -65,7 +65,7 @@
                 }
             ],
             "description": "Just another admin panel for Laravel. Inspired by Backpack.",
-            "time": "2017-04-20T17:59:59+00:00"
+            "time": "2017-05-11T08:10:51+00:00"
         },
         {
             "name": "almasaeed2010/adminlte",
