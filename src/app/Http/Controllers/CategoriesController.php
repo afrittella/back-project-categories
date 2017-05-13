@@ -22,8 +22,6 @@ class CategoriesController extends Controller
 
     public function index(Categories $categories)
     {
-
-
         $root = $categories->findBy('slug', 'root');
 
         if (!empty($root)) {

@@ -30,6 +30,13 @@ class Categories extends Base
         return $this->model->withDepth()->find($id, $columns);
     }
 
+    public function create(array $data)
+    {
+        $data['slug'] = $data['name'];
+
+        return parent::create($data);
+    }
+
     public function moveUp($id)
     {
         $menu = $this->model->find($id);
@@ -47,16 +54,6 @@ class Categories extends Base
         $category = $this->find($category_id);
 
         return $category->addAttachment($data);
-
-        /*$attachment = $attachments->create(array_merge($data, ['user_id' => $user_id]));
-
-        if (!empty($attachment)) {
-            $category = $this->find($category_id);
-
-            $category->attachments()->attach($attachment->id);
-        }*/
-
-        //return false;
     }
 
     public function tree($name)

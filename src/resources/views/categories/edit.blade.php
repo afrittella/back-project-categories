@@ -76,45 +76,38 @@
 
             @if ($category->depth < 2)
                 @component('back-project::components.panel', ['box_title' => (!empty($category->parent_id) ? ucfirst(trans('back-project-categories::categories.children')) : trans('back-project::crud.list')), 'box_icon' => 'sitemap', 'box_color' => 'info'])
+                    <h4><i class="fa fa-plus"></i> {{ trans('back-project::crud.new') }}</h4>
+                    @component('back-project-categories::categories.action-add', ['category' => $category])
+                    @endcomponent
+                    <hr>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="col-md-2">
-                                <small>Immagine</small>
+                                <small>{{ trans('back-project-categories::categories.image') }}</small>
                             </div>
                             <div class="col-md-2">
-                                <small>Slug</small>
+                                <small>{{ trans('back-project-categories::categories.slug') }}</small>
                             </div>
                             <div class="col-md-2">
-                                <small>Nome/Titolo</small>
+                                <small>{{ trans('back-project-categories::categories.name') }}</small>
                             </div>
                             <div class="col-md-4">
-                                <small>Descrizione</small>
+                                <small>{{ trans('back-project-categories::categories.description') }}</small>
                             </div>
                             <div class="col-md-2">
-                                <small>Azioni</small>
+                                <small>{{ trans('back-project::crud.actions') }}</small>
                             </div>
                         </div>
-
                     </div>
-                        <hr>
-
-                        <div class="list-group">
-                            @each('back-project-categories::categories.action', $children, 'category')
-                        </div>
-
-                    @slot('box_footer')
-                            <h4><i class="fa fa-plus"></i> {{ trans('back-project::crud.new') }}</h4>
-                        @component('back-project-categories::categories.action-add', ['category' => $category])
-                        @endcomponent
-                    @endslot
-
+                    <div class="list-group">
+                        @each('back-project-categories::categories.action', $children, 'category')
+                    </div>
                 @endcomponent
             @endif
         </div>
     </div>
-@endsection
-
-@include('back-project::components.upload-window', [
+    @include('back-project::components.upload-window', [
 'title' => trans('back-project::media.upload_window_title'),
 'url' => route('attachments.store')
 ])
+@endsection

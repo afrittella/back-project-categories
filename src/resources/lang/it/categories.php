@@ -8,5 +8,6 @@ return [
     'name' => 'Nome/Titolo',
     'slug' => 'Slug',
     'description' => 'Descrizione',
-    'children' => 'Sotto-categorie'
+    'children' => 'Sotto-categorie',
+    'image' => 'Immagine',
 ];

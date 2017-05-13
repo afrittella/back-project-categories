@@ -24,7 +24,7 @@ class CategoryAdd extends FormRequest
     public function rules()
     {
         return [
-            'slug' => 'required|max:255|unique:categories',
+            //'slug' => 'required|max:255|unique:categories',
             'name' => 'required|max:255'
         ];
     }

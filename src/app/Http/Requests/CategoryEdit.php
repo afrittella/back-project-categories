@@ -7,12 +7,12 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class CategoryEdit extends FormRequest
 {
-    protected $categories;
+    /*protected $categories;
     public function __construct(array $query = array(), array $request = array(), array $attributes = array(), array $cookies = array(), array $files = array(), array $server = array(), $content = null, Categories $categories)
     {
         parent::__construct($query, $request, $attributes, $cookies, $files, $server, $content);
         $this->categories = $categories;
-    }
+    }*/
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -30,10 +30,10 @@ class CategoryEdit extends FormRequest
      */
     public function rules()
     {
-        $category = $this->categories->find($this->route('category'));
+        //$category = $this->categories->find($this->route('category'));
 
         return [
-            'slug' => 'required|max:255|unique:categories,slug,'.$category->id,
+            //'slug' => 'required|max:255|unique:categories,slug,'.$category->id,
             'name' => 'required|max:255',
         ];
     }
