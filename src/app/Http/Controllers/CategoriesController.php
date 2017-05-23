@@ -2,9 +2,7 @@
 
 namespace Afrittella\BackProjectCategories\Http\Controllers;
 
-use Afrittella\BackProject\Facades\SlugGenerator;
 use Afrittella\BackProject\Http\Controllers\Controller;
-use Afrittella\BackProject\Exceptions\NotFoundException;
 use Afrittella\BackProject\Repositories\Attachments;
 use Afrittella\BackProjectCategories\Http\Requests\CategoryAdd;
 use Afrittella\BackProjectCategories\Http\Requests\CategoryEdit;
@@ -25,7 +23,7 @@ class CategoriesController extends Controller
         $root = $categories->findBy('slug', 'root');
 
         if (!empty($root)) {
-            return redirect(route('categories.edit', [$root->id]));
+            return redirect(route('bp.categories.edit', [$root->id]));
         }
 
         return view('back-project-categories::categories.index')->with('categories', $categories->transform($categories->all()));
@@ -75,7 +73,7 @@ class CategoriesController extends Controller
         if ($request->ajax() || $request->wantsJson()) {
             return response()->json();
         } else {
-            return redirect(route('categories.index'));
+            return redirect(route('bp.categories.index'));
         }
     }
 

@@ -3,7 +3,7 @@
         <div class="col-md-2">
             @if (!empty($category->getAttachment()))
                 <a href="#" data-toggle="modal" data-target="#media-manager-single-upload"
-                   data-url=" {{ route('categories.add-image', [$category->id]) }}">
+                   data-url=" {{ route('bp.categories.add-image', [$category->id]) }}">
                     {!! MediaManager::getCachedImageTag('categories_thumb', $category->getAttachment()) !!}
                 </a>
             @else
@@ -11,7 +11,7 @@
                                     'color' => 'default',
                                     'icon' => 'fa-file-image-o',
                                     'class' => 'sm',
-                                    'attributes' => ' data-toggle="modal" data-target="#media-manager-single-upload" data-url="'.route('categories.add-image', [$category->id]).'"'
+                                    'attributes' => ' data-toggle="modal" data-target="#media-manager-single-upload" data-url="'.route('bp.categories.add-image', [$category->id]).'"'
                                     ])
                 @endcomponent
             @endif
@@ -32,7 +32,7 @@
         <div class="col-md-2">
             @component('back-project::components.generic-button-link', [
                 'icon' => 'edit',
-                'url' => route('categories.edit', $category->id),
+                'url' => route('bp.categories.edit', $category->id),
                 'color' => 'default',
                 'class' => 'xs'
             ])
@@ -40,7 +40,7 @@
 
             @component('back-project::components.generic-button-link', [
                 'icon' => 'delete',
-                'url' => route('categories.delete', $category->id),
+                'url' => route('bp.categories.delete', $category->id),
                 'color' => 'danger',
                 'action' => 'delete',
                 'class' => 'xs'
@@ -49,7 +49,7 @@
 
             @component('back-project::components.generic-button-link', [
                 'icon' => 'up',
-                'url' => route('categories.up', $category->id),
+                'url' => route('bp.categories.up', $category->id),
                 'color' => 'primary',
                 'class' => 'xs'
             ])
@@ -57,7 +57,7 @@
 
             @component('back-project::components.generic-button-link', [
                 'icon' => 'down',
-                'url' => route('categories.down', $category->id),
+                'url' => route('bp.categories.down', $category->id),
                 'color' => 'primary',
                 'class' => 'xs'
             ])

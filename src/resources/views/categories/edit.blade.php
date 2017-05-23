@@ -5,12 +5,12 @@
       [
         'breadcrumbs' => [
             [
-                'url' => route('admin.dashboard'),
+                'url' => route('bp.admin.dashboard'),
                 'title' => trans('back-project::menu.Dashboard'),
                 'icon' => 'dashboard'
             ],
             [
-                'url' => route('categories.index'),
+                'url' => route('bp.categories.index'),
                 'title' => trans('back-project::menu.Categories'),
                 'icon' => 'list'
             ],
@@ -28,10 +28,10 @@
     <div class="row">
         <div class="col-md-12">
             @if (!empty($category->parent_id))
-                <a href="{{ route('categories.edit', [$category->parent_id]) }}">{!! icon('arrow-left') !!} {{ trans('back-project::crud.back') }}</a>
+                <a href="{{ route('bp.categories.edit', [$category->parent_id]) }}">{!! icon('arrow-left') !!} {{ trans('back-project::crud.back') }}</a>
 
                 @component('back-project::components.panel', ['box_title' => trans('back-project::crud.edit'), 'box_icon' => 'pencil'])
-                    {!! Form::model($category, ['class' => 'form-horizontal', 'method' => 'post', 'route' => ['categories.update', $category->id]]) !!}
+                    {!! Form::model($category, ['class' => 'form-horizontal', 'method' => 'post', 'route' => ['bp.categories.update', $category->id]]) !!}
                     {{ method_field('PUT') }}
 
                     @include('back-project::components.forms.text', [
@@ -108,6 +108,6 @@
     </div>
     @include('back-project::components.upload-window', [
 'title' => trans('back-project::media.upload_window_title'),
-'url' => route('attachments.store')
+'url' => route('bp.attachments.store')
 ])
 @endsection

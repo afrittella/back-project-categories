@@ -18,4 +18,6 @@ class Category extends Model
     {
         $this->attributes['slug'] = $this->createSlug($value, $this->id);
     }
+
+
 }

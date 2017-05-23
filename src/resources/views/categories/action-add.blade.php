@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-sm-12">
-        {!! Form::open(['route' => ['categories.store'], 'method' => 'post', 'class' => 'form-inline ajax-handled']) !!}
+        {!! Form::open(['route' => ['bp.categories.store'], 'method' => 'post', 'class' => 'form-inline ajax-handled']) !!}
         {!! Form::hidden('parent_id', $category->id) !!}
         <div class="form-group {{ $errors->categoryChildren->has('name') ? ' has-error' : '' }}">
             {!! Form::text('name', null, ['class' => 'form-control', 'required' => true, 'placeholder' => trans('back-project-categories::categories.name').' (*)']) !!}

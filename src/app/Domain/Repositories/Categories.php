@@ -88,10 +88,10 @@ class Categories extends Base
 
         foreach ($data as $row):
             $actions = [
-                'edit' => ['url' => route('categories.edit', [$row->id])]
+                'edit' => ['url' => route('bp.categories.edit', [$row->id])]
             ];
 
-            $actions['delete'] = ['url' => route('categories.delete', [$row->id])];
+            $actions['delete'] = ['url' => route('bp.categories.delete', [$row->id])];
 
             $body[] = [
                 'columns' => [
